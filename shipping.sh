@@ -65,7 +65,7 @@ cd /app
 mvn clean package &>>$LOG_FILE
 VALIDATE $? "Maven package creation"
 
-mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
+mv target/admission-1.0.0.jar shipping.jar &>>$LOG_FILE
 VALIDATE $? "Renaming shipping.jar"
 
 cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service &>>$LOG_FILE
@@ -83,12 +83,12 @@ VALIDATE $? "Starting shipping"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL client"
 
-mysql -h mysql.daws2025.online -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities'
+mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities'
 if [ $? -ne 0 ]
 then
-    mysql -h mysql.daws2025.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
-    mysql -h mysql.daws2025.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql &>>$LOG_FILE
-    mysql -h mysql.daws2025.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$LOG_FILE
+    mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
+    mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql &>>$LOG_FILE
+    mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$LOG_FILE
     VALIDATE $? "Loading master data into MySQL"
 else
     echo -e "Data is already loaded into MySQL... $Y SKIPPING $N"
