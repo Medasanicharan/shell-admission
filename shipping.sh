@@ -83,7 +83,7 @@ VALIDATE $? "Starting shipping"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL client"
 
-mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities'
+mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD -e 'use admission_db'
 if [ $? -ne 0 ]
 then
     mysql -h mysql.cloudnai.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
