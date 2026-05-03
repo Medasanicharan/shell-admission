@@ -48,8 +48,8 @@ VALIDATE $? "Installing nginx"
 systemctl enable nginx &>>$LOG_FILE
 VALIDATE $? "Enabling nginx service"
 
-systemctl start nginx &>>$LOG_FILE
-VALIDATE $? "Starting nginx service"
+# systemctl start nginx &>>$LOG_FILE
+# VALIDATE $? "Starting nginx service"
 
 rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 VALIDATE $? "Cleaning old nginx files"
@@ -69,7 +69,6 @@ VALIDATE $? "Remove default nginx configuration"
 
 cp -f $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 VALIDATE $? "Copying nginx configuration"
-
 
 nginx -t &>>$LOG_FILE
 VALIDATE $? "check the status of nginx config file"
