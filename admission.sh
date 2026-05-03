@@ -3,11 +3,11 @@
 # -------------------------------
 # Configuration
 # -------------------------------
-AMI_ID="ami-09c813fb71547fc4f"
-SG_ID="sg-074b66f88e51305b4"
+AMI_ID="ami-0220d79f3f480ecf5"
+SG_ID="sg-0a6539a63af6ae192"
 ALL_INSTANCES=("mysql" "backend" "frontend")
-ZONE_ID="Z079925038GKLPVTTRWKU"
-DOMAIN_NAME="daws2025.online"
+ZONE_ID="Z034816722EVQX4WB5HSU"
+DOMAIN_NAME="cloudnai.online"
 
 # -------------------------------
 # Parse arguments
