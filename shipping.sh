@@ -52,8 +52,7 @@ read -s MYSQL_ROOT_PASSWORD
 mkdir -p /app &>>$LOG_FILE
 VALIDATE $? "creating app diectory"
 
-curl -o /tmp/shipping.zip https://student-admission.s3.us-east-1.amazonaws.com/backend.zip
-&>>$LOG_FILE
+curl -o /tmp/shipping.zip hhttps://student-admission.s3.us-east-1.amazonaws.com/backend-v4.zip &>>$LOG_FILE
 VALIDATE $? "Downloading shipping"
 
 rm -rf /app/*
