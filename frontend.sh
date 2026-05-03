@@ -70,5 +70,14 @@ VALIDATE $? "Remove default nginx configuration"
 cp -f $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 VALIDATE $? "Copying nginx configuration"
 
+
+nginx -t &>>$LOG_FILE
+VALIDATE $? "check the status of nginx config file"
+
+if [ $? -ne 0 ]; then
+    echo "❌ Nginx config is wrong. Not restarting."
+    exit 1
+fi
+
 systemctl restart nginx &>>$LOG_FILE
 VALIDATE $? "Restarting nginx service"
