@@ -67,7 +67,7 @@ VALIDATE $? "Extracting frontend files"
 rm -rf /etc/nginx/nginx.conf
 VALIDATE $? "Remove default nginx configuration"
 
-cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
+cp -f $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 VALIDATE $? "Copying nginx configuration"
 
 nginx -t &>>$LOG_FILE
